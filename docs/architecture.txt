@@ -1,0 +1,34 @@
+UniBook Cloud Architecture
+
+Windows 11 Host
+       |
+       v
+VirtualBox Type 2 Hypervisor
+       |
+       v
+Ubuntu Server VM
+       |
+       +---- UFW Firewall (default deny incoming)
+       |       +---- SSH 22/tcp
+       |       +---- Web 8080/tcp
+       |
+       v
+Docker Engine / Docker Compose
+       |
+       +-----------------------------+
+       |                             |
+       v                             v
+unibook-web              unibook-db
+PHP 8.2 + Apache              MySQL 8.0
+       |                             |
+       +-------- Internal Docker ----+
+                    Network
+                       |
+                       v
+             unibook_mysql_data
+                 Persistent Volume
+
+Database tables: users | resources | reservations | reservation_activity
+
+Cron -> automation/backup.sh -> mysqldump -> timestamped SQL files
+       -> /opt/unibook/backups/backup.log
