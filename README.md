@@ -34,9 +34,9 @@ UniBook Cloud helps a school manage shared facilities and equipment reservations
 1. Copy `.env.example` to `.env`.
 2. Set strong passwords in `.env`.
 3. Run `docker compose up -d --build`.
-4. Open `http://localhost:8080/setup_admin.php`.
+4. Open `http://localhost:8082/setup_admin.php`.
 5. Create the first Admin account.
-6. Log in at `http://localhost:8080`.
+6. Log in at `http://localhost:8082`.
 7. Delete `website/setup_admin.php` after creating the admin account, or restrict access to it.
 
 > The setup page only works when the `users` table is empty. Do not leave it available in a public production deployment.
